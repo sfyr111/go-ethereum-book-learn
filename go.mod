@@ -1,4 +1,4 @@
-module go-ethereum-client
+module go-ethereum-book-learn
 
 go 1.22.7
 
