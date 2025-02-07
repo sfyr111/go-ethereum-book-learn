@@ -14,7 +14,7 @@ import (
 )
 
 // Function to create a new keystore account and save it to disk
-func createKeystore() string {
+func createKeystore() {
 	// Step 1: Initialize a keystore at the "./tmp" directory
 	ks := keystore.NewKeyStore("./tmp", keystore.StandardScryptN, keystore.StandardScryptP)
 
@@ -30,8 +30,6 @@ func createKeystore() string {
 	// Step 4: Print the newly generated Ethereum address
 	fmt.Println("New Account Address:", account.Address.Hex())
 	fmt.Println("Keystore file:", account.URL.Path)
-
-	return account.URL.Path
 }
 
 // Function to import an existing keystore file
