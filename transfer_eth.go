@@ -11,6 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/params"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	}
 
 	// Step 2: Load private key (sender's private key in hex format)
-	privateKey, err := crypto.HexToECDSA("0a4e015713861f42e795d4619f95af0cb0e95f309649244d7037dd3ce805645e")
+	privateKey, err := crypto.HexToECDSA("f1b3f8e0d52caec13491368449ab8d90f3d222a3e485aa7f02591bbceb5efba5")
 	if err != nil {
 		log.Fatal("Failed to load private key:", err)
 	}
@@ -45,14 +46,15 @@ func main() {
 	value := big.NewInt(1000000000000000000) // 1 ETH in wei
 
 	// Step 6: Set the gas limit and retrieve a suggested gas price
-	gasLimit := uint64(21000) // Standard gas limit for ETH transfer
+	// gasLimit := uint64(21000) // Standard gas limit for ETH transfer
+	gasLimit := params.TxGas // uint64(21000)
 	gasPrice, err := client.SuggestGasPrice(context.Background())
 	if err != nil {
 		log.Fatal("Failed to retrieve suggested gas price:", err)
 	}
 
 	// Step 7: Define the recipient address
-	toAddress := common.HexToAddress("0x111b130289DCb3F282054f7E5727D75e20a5c51b")
+	toAddress := common.HexToAddress("0xE280029a7867BA5C9154434886c241775ea87e53")
 	fmt.Println("Recipient Address:", toAddress.Hex())
 
 	// Step 8: Create the transaction (no data field as this is a simple ETH transfer)

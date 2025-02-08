@@ -18,13 +18,13 @@ import (
 
 func main() {
 	// Step 1: Connect to Ethereum client
-	client, err := ethclient.Dial("https://rinkeby.infura.io/v3/YOUR_INFURA_PROJECT_ID")
+	client, err := ethclient.Dial("http://127.0.0.1:8545")
 	if err != nil {
 		log.Fatal("Failed to connect to the Ethereum client:", err)
 	}
 
 	// Step 2: Load private key
-	privateKey, err := crypto.HexToECDSA("fad9c8855b740a0b7ed4c221dbad0f33a83a49cad6b3fe8d5817ac83d38b6a19")
+	privateKey, err := crypto.HexToECDSA("f1b3f8e0d52caec13491368449ab8d90f3d222a3e485aa7f02591bbceb5efba5")
 	if err != nil {
 		log.Fatal("Failed to load private key:", err)
 	}
@@ -47,7 +47,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Failed to get suggested gas price:", err)
 	}
-	toAddress := common.HexToAddress("0x4592d8f8d7b001e72cb26a73e4fa1806a51ac79d")    // Recipient address
+	toAddress := common.HexToAddress("0xE280029a7867BA5C9154434886c241775ea87e53")    // Recipient address
 	tokenAddress := common.HexToAddress("0x28b149020d2152179873ec60bed6bf7cd705775d") // ERC-20 contract address
 
 	// Step 4: Calculate method ID for transfer function

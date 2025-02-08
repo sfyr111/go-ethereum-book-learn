@@ -27,13 +27,13 @@ func main() {
 
 	// Step 3: Iterate over transactions in the block
 	for _, tx := range block.Transactions() {
-		fmt.Println("Transaction Hash:", tx.Hash().Hex())
-		fmt.Println("Value (Wei):", tx.Value().String())
-		fmt.Println("Gas:", tx.Gas())
-		fmt.Println("Gas Price (Wei):", tx.GasPrice().Uint64())
-		fmt.Println("Nonce:", tx.Nonce())
-		fmt.Println("Data:", tx.Data())
-		fmt.Println("To Address:", tx.To().Hex())
+		fmt.Println("Transaction Hash:", tx.Hash().Hex())       // transaction hash
+		fmt.Println("Value (Wei):", tx.Value().String())        // transaction value
+		fmt.Println("Gas:", tx.Gas())                           // gas
+		fmt.Println("Gas Price (Wei):", tx.GasPrice().Uint64()) // gas price
+		fmt.Println("Nonce:", tx.Nonce())                       // nonce
+		fmt.Println("Data:", tx.Data())                         // data
+		fmt.Println("To Address:", tx.To().Hex())               // to address
 
 		// Retrieve chainID for EIP155 signer
 		chainID, err := client.NetworkID(context.Background())
