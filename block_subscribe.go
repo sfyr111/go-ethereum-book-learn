@@ -4,15 +4,20 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	// client, err := ethclient.Dial("wss://mainnet.base.org")
-	// client, err := ethclient.Dial("wss://cloudflare-eth.com")
-	client, err := ethclient.Dial("wss://eth-mainnet.g.alchemy.com/v2/YOUR-API-KEY")
+	if err := godotenv.Load(); err != nil {
+		log.Fatal(err)
+	}
+
+	alchemKey := os.Getenv("ALCHEMY_KEY")
+	client, err := ethclient.Dial(fmt.Sprintf("wss://eth-mainnet.g.alchemy.com/v2/%s", alchemKey))
 	if err != nil {
 		log.Fatal(err)
 	}
