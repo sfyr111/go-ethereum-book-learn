@@ -28,7 +28,7 @@ solc --abi contract/Store.sol -o build
 solc --bin contract/Store.sol -o build
 
 # Generate Go bindings (with deploy methods)
-abigen --bin=build/Store.bin --abi=build/Store.abi --pkg=store --out=Store.go
+abigen --bin=build/Store.bin --abi=build/Store.abi --pkg=store --out=contract/Store.go
 ```
 
 ## Contract Details
