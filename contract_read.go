@@ -16,12 +16,16 @@ func main() {
 		log.Fatal(err)
 	}
 
-	address := common.HexToAddress("0xf87b9077f1044A8f1c6b309E3374eF115Bd9dE32")
+	address := common.HexToAddress("0xf3585FCD969502624c6A8ACf73721d1fce214E83")
 	instance, err := store.NewStore(address, client)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("contract is loaded")
-	_ = instance
+	version, err := instance.Version(nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(version) // "1.0"
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	store "go-ethereum-book-learn/contract/store" // for demo
+	store "go-ethereum-book-learn/contract/store"
 )
 
 func main() {
@@ -38,11 +38,13 @@ func main() {
 	}
 
 	gasPrice, err := client.SuggestGasPrice(context.Background())
+
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Failed to get chain ID:", err)
 	}
 
 	auth := bind.NewKeyedTransactor(privateKey)
+
 	auth.Nonce = big.NewInt(int64(nonce))
 	auth.Value = big.NewInt(0)     // in wei
 	auth.GasLimit = uint64(300000) // in units
@@ -54,8 +56,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(address.Hex())   // 0x42c15CD75C49EE805f8050Bde8F6b3895384c75C
-	fmt.Println(tx.Hash().Hex()) // 0x3e559fa72a1dda914a297bec8716339d64c663764087e276ed5e4daf8e98c7f5
+	fmt.Println(address.Hex())   // 0x147B8eb97fD247D06C4006D269c90C1908Fb5D54
+	fmt.Println(tx.Hash().Hex()) // 0xdae8ba5444eefdc99f4d45cd0c4f24056cba6a02cefbf78066ef9f4188ff7dc0
 
 	_ = instance
 }
