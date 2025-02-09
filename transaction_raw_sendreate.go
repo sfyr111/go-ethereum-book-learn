@@ -29,5 +29,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("tx sent: %s", tx.Hash().Hex()) // tx sent: 0xc429e5f128387d224ba8bed6885e86525e14bfdc2eb24b5e9c3351a1176fd81f
+	fmt.Printf("tx sent: %s", tx.Hash().Hex()) // tx sent: 0x5577d5553abb7cac42c75fc10c171aaaeed208c7f1e5cf03497c9edf3256ddc2%
 }
